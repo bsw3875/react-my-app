@@ -1,22 +1,24 @@
-import React from 'react'
-import './App.css'
-import { Route } from 'react-router';
+import React from "react";
+import { Route } from "react-router-dom";
 
-function App () {
-  const route = (
-    <div>
-      <Route path='/about'>
-        <About />
-      </Route>
-      <Route path='/:user'>
-        <User />
-      </Route>
-      <Route>
-        <NoMatch />
-      </Route>
+import "./App.css";
+import Welcome from "./component/welcome/Welcome";
+import Clock from "./component/clock/Clock";
+import Contact from "./component/contact/Contact";
+import Navigation from "./component/navigation/Navigation";
+
+function App() {
+  return (
+    <div className="App">
+      <Navigation />
+      <Route
+        exact
+        path="/"
+        render={(props) => <Welcome {...props} name="Phil" />}
+      />
+      <Route path="/clock" component={Clock} />
+      <Route path="/contact" component={Contact} />
     </div>
-  )
- 
+  );
 }
-
-export default App
+export default App;
